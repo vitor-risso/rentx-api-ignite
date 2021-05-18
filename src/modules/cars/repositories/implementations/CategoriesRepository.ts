@@ -1,4 +1,4 @@
-import { EntityRepository, getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from "typeorm";
 import Category from "../../entitites/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
@@ -10,7 +10,6 @@ class CategoriesRepository implements ICategoriesRepository {
   constructor() {
     this.repository = getRepository(Category)
   }
-
 
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {
 
