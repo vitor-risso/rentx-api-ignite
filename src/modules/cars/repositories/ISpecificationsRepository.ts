@@ -1,3 +1,4 @@
+import { Specification } from "../entities/Specification";
 
 interface ICreateSpecificationDTO {
   name: string;
@@ -5,9 +6,8 @@ interface ICreateSpecificationDTO {
 }
 
 interface ISpecificationsRepository {
-  create({ name, description }: ICreateSpecificationDTO): void;
-  findByName(name: string)
-
+  create({ name, description }: ICreateSpecificationDTO): Promise<void>;
+  findByName(name: string): Promise<Specification>
 }
 
 export { ISpecificationsRepository, ICreateSpecificationDTO }
