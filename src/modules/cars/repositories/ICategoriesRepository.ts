@@ -1,4 +1,4 @@
-import Category from "../entitites/Category";
+import Category from "../entities/Category";
 
 
 interface ICreateCategoryDTO {
