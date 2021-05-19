@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Specification } from '../modules/cars/entitites/Specification';
+import { Specification } from '../modules/cars/entities/Specification';
 import { specificatonController } from '../modules/cars/useCases/createSpecification';
 
 const specificationsRoutes = Router();
