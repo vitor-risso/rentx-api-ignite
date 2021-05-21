@@ -11,7 +11,6 @@ class AuthenticateUserController {
     const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase)
 
     const token = await authenticateUserUseCase.execute({ email, password })
-    console.log(token)
 
     return res.json(token)
   }
