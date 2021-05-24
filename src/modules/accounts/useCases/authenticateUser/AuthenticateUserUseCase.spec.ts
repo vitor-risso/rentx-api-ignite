@@ -1,16 +1,13 @@
-import { AppError } from "../../../../errors/AppError";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { UsersRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory"
-import { IUsersRepository } from "../../repositories/IUsersRepository"
-import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
-import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase"
+import { AppError } from "errors/AppError";
+import { CreateUserUseCase } from "modules/accounts/useCases/createUser/CreateUserUseCase";
+import { IUsersRepository } from "modules/accounts/repositories/IUsersRepository";
+import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 let repository: IUsersRepository;
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let createUserUseCase: CreateUserUseCase;
 
 describe("Authenticate User", () => {
-
 
   beforeEach(() => {
     repository = new UsersRepositoryInMemory()
