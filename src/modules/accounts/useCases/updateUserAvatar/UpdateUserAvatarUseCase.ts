@@ -1,3 +1,4 @@
+import { serveFiles } from "swagger-ui-express";
 import { inject, injectable } from "tsyringe";
 import { deleteFile } from "../../../../utils/file";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
@@ -20,7 +21,9 @@ class UpdateUserAvatarUseCase {
 
     const user = await this.repository.findById(user_id)
 
-    await deleteFile(`./tmp/avatar/${user.avatar}`)
+    if (user.avatar) {
+      await deleteFile(`./tmp/avatar/${user.avatar}`)
+    }
 
     user.avatar = avatar_file;
 
