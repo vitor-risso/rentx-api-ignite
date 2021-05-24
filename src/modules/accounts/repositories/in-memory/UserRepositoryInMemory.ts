@@ -1,6 +1,5 @@
-import { AppError } from "../../../../errors/AppError";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { User } from "../../entities/User";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { User } from "@modules/accounts/entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 
 class UsersRepositoryInMemory implements IUsersRepository {
@@ -25,4 +24,5 @@ class UsersRepositoryInMemory implements IUsersRepository {
   }
 }
 
-export { UsersRepositoryInMemory }
+export { UsersRepositoryInMemory };
+

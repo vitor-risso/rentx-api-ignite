@@ -1,7 +1,7 @@
-import { inject, injectable } from 'tsyringe'
+import { AppError } from '@errors/AppError';
+import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
+import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 
 interface IRequest {
@@ -26,4 +26,5 @@ class CreateCategoryUseCase {
     this.categoriesRepository.create({ name, description })
   }
 }
-export { CreateCategoryUseCase }
+export { CreateCategoryUseCase };
+

@@ -1,5 +1,4 @@
-import { AppError } from "../../../../errors/AppError";
-import Category from "../../entities/Category";
+import Category from "@modules/cars/entities/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 class CategoryRepositoryInMemory implements ICategoriesRepository {
