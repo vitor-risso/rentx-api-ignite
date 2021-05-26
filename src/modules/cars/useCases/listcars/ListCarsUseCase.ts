@@ -17,8 +17,8 @@ class ListCarsUseCase {
     private repository: ICarsRepository
   ) { }
 
-  async execute({ brand=null, category_id=null, name=null }: IRequest): Promise<Car[]> {
-    return this.repository.listAllCarsAvailable(brand, category_id, name)
+  async execute({ brand = null, category_id = null, name = null }: IRequest): Promise<Car[]> {
+    return this.repository.listAllCarsAvailable(category_id, brand, name)
   }
 
 }
