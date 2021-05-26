@@ -49,7 +49,6 @@ describe("Lir cars", () => {
     })
 
     const cars = await listCarsUseCase.execute({ name: car.name })
-    console.log(cars)
 
     expect(cars).toEqual([car])
   })
@@ -76,6 +75,33 @@ describe("Lir cars", () => {
     })
 
     const cars = await listCarsUseCase.execute({ brand: car.brand })
+
+    expect(cars).toEqual([car])
+  })
+
+
+  it('should be ableto list all available cars by category_id', async () => {
+    const car = await repository.create({
+      "name": "Fiesta",
+      "description": "Carro popular",
+      "dayli_rate": 40,
+      "license_plate": "abc-111221",
+      "fine_amount": 100,
+      "brand": "Ford",
+      "category_id": "02ab5b50-dfde-45ee-bf1a-e599bdcd9193"
+    })
+
+    await repository.create({
+      "name": "Hilux",
+      "description": "Caminhonete",
+      "dayli_rate": 40,
+      "license_plate": "abc-11121",
+      "fine_amount": 100,
+      "brand": "Toyota",
+      "category_id": "287e90ff-aa48-4dc5-86d2-7106a94fc8b5"
+    })
+
+    const cars = await listCarsUseCase.execute({ category_id: car.category_id })
 
     expect(cars).toEqual([car])
   })
