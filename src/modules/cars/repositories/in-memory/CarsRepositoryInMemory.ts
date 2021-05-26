@@ -6,6 +6,7 @@ import { ICarsRepository } from "../ICarsRepository";
 
 class CarsRepositoryInMemory implements ICarsRepository {
 
+
   cars: Car[] = []
 
   async create({ brand, category_id, dayli_rate, description, fine_amount, license_plate, name }: IcreateCartDTO): Promise<Car> {
@@ -26,6 +27,20 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
   async finByLicensePlate(license_plate: string): Promise<Car> {
     return this.cars.find(car => car.license_plate === license_plate)
+  }
+
+  async listAllCarsAvailable(
+    category_id?: string,
+    brand?: string,
+    name?: string): Promise<Car[]> {
+    const all = this.cars
+      .filter(car => car.available === true)
+      .filter(car => (brand && car.brand === brand))
+      .filter(car => (category_id && car.category_id === category_id))
+      .filter(car => (name && car.name === name))
+
+
+    return all
   }
 
 }
