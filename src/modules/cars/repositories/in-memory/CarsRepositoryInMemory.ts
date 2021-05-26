@@ -38,8 +38,6 @@ class CarsRepositoryInMemory implements ICarsRepository {
       .filter(car => (brand && car.brand === brand))
       .filter(car => (category_id && car.category_id === category_id))
       .filter(car => (name && car.name === name))
-
-
     return all
   }
 

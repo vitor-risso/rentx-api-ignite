@@ -14,11 +14,11 @@ class ListCarsUseCase {
 
   constructor(
     // @inject("CarsRepository")
-    private repositoru: ICarsRepository
+    private repository: ICarsRepository
   ) { }
 
   async execute({ brand=null, category_id=null, name=null }: IRequest): Promise<Car[]> {
-    return this.repositoru.listAllCarsAvailable(brand, category_id, name)
+    return this.repository.listAllCarsAvailable(brand, category_id, name)
   }
 
 }
