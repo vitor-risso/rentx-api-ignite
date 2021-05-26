@@ -4,7 +4,7 @@ import { CreateCarUseCase } from "./CreateCarUseCase";
 
 class CreateCarController {
 
-  async hadle(req: Request, res: Response): Promise<Response> {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name,
       description,
       dayli_rate,
