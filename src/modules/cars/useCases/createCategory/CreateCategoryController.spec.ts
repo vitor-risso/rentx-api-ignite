@@ -29,7 +29,7 @@ describe('Create Category Controller', () => {
   })
 
   it("Should able to create a new category", async () => {
-    const responseToken = await request(app).post('/session').send({
+    const responseToken = await request(app).post('/sessions').send({
       email: "admin@admin.com.br",
       password: "admin"
     })
@@ -41,14 +41,29 @@ describe('Create Category Controller', () => {
         name: "Category test",
         description: "Description test"
       }).set({
-        Authorization: ``
+        Authorization: `Baerer ${token}`
       })
 
     expect(response.statusCode).toBe(201)
-    expect(response.body).toBe({
-      name: "Category test",
-      description: "Description test"
+  })
+
+  it("Should not able to create a category twice", async () => {
+    const responseToken = await request(app).post('/sessions').send({
+      email: "admin@admin.com.br",
+      password: "admin"
     })
+
+    const { token } = responseToken.body
+
+    const response = await request(app).post('/categories')
+      .send({
+        name: "Category test",
+        description: "Description test"
+      }).set({
+        Authorization: `Baerer ${token}`
+      })
+
+    expect(response.statusCode).toBe(400)
   })
 
 })
