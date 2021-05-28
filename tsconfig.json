@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-
     "target": "es5",
-    "module": "commonjs", 
-    "outDir": "./dist", 
+    "module": "commonjs",
+    "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
       "@modules/*": [
@@ -17,12 +16,15 @@
       ],
       "@errors/*": [
         "errors/*"
+      ],
+      "@utils/*": [
+        "utils/*"
       ]
-    }, 
+    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true, 
-    "skipLibCheck": true, 
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   }
