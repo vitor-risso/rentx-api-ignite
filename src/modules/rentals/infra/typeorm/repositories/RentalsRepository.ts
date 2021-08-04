@@ -3,20 +3,21 @@ import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsReposi
 import { getRepository, Repository } from "typeorm";
 import { Rental } from "../entities/Rental";
 
-
 class RentalsRepository implements IRentalsRepository {
-  private repository: Repository<Rental>
+  private repository: Repository<Rental>;
 
   constructor() {
-    this.repository = getRepository(Rental)
+    this.repository = getRepository(Rental);
   }
 
   async findOpenRentalByCar(car_id: string): Promise<Rental> {
-    return await this.repository.findOne({ where: { car_id, end_date: null } })
+    return await this.repository.findOne({ where: { car_id, end_date: null } });
   }
 
   async findOpenRentalByUser(user_id: string): Promise<Rental> {
-    return await this.repository.findOne({ where: { user_id, end_date: null } })
+    return await this.repository.findOne({
+      where: { user_id, end_date: null },
+    });
   }
 
   async create({
@@ -25,7 +26,7 @@ class RentalsRepository implements IRentalsRepository {
     expected_return_date,
     id,
     end_date,
-    total
+    total,
   }: ICreateRentalDTO): Promise<Rental> {
     const rental = this.repository.create({
       car_id,
@@ -33,20 +34,24 @@ class RentalsRepository implements IRentalsRepository {
       user_id,
       id,
       end_date,
-      total
-    })
+      total,
+    });
 
-    await this.repository.save(rental)
+    await this.repository.save(rental);
 
-    return rental
+    return rental;
   }
 
   async findById(id: string): Promise<Rental> {
-    return await this.repository.findOne({ id })
+    return await this.repository.findOne({ id });
   }
 
+  async findByUser(user_id: string): Promise<Rental[]> {
+    return await this.repository.find({
+      where: { user_id },
+      relations: ["car"],
+    });
+  }
 }
 
-
 export { RentalsRepository };
-
