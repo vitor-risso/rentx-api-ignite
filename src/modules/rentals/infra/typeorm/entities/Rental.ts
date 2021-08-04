@@ -1,11 +1,23 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
-import { v4 as uuid } from 'uuid';
+import { Car } from "@modules/cars/infra/typeorm/entities/Car";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { v4 as uuid } from "uuid";
 
 @Entity("rentals")
 class Rental {
-
   @PrimaryColumn()
   id: string;
+
+  @ManyToOne(() => Car)
+  @JoinColumn({ name: "car_id" })
+  car: Car;
 
   @Column()
   car_id: string;
@@ -22,7 +34,8 @@ class Rental {
   @Column()
   expected_return_date: Date;
 
-  total: number;
+  @Column()
+  total?: number;
 
   @CreateDateColumn()
   created_at: Date;
@@ -32,11 +45,9 @@ class Rental {
 
   constructor() {
     if (!this.id) {
-      this.id = uuid()
+      this.id = uuid();
     }
   }
-
 }
 
 export { Rental };
-
