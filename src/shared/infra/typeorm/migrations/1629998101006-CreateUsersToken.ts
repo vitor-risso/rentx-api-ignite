@@ -13,7 +13,7 @@ export class CreateUsersToken1629998101006 implements MigrationInterface {
               isPrimary: true
             },
             {
-              name:"refrash_tokne",
+              name:"refresh_token",
               type:"varchar"
             },
             {
@@ -21,7 +21,7 @@ export class CreateUsersToken1629998101006 implements MigrationInterface {
               type:"uuid"
             },
             {
-              name:"expire_date",
+              name:"expires_date",
               type:"timestamp"
             },
             {
