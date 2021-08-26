@@ -7,19 +7,25 @@ import { User } from "../entities/User";
 import { UserTokens } from "../entities/UserTokens";
 
 class UsersTokenRepository implements IUsersTokenRepository {
-  private repository: Repository<UserTokens>
-  
-  constructor(){
-    this.repository = getRepository(UserTokens)
+  private repository: Repository<UserTokens>;
+
+  constructor() {
+    this.repository = getRepository(UserTokens);
   }
-  async create({ expires_date, refresh_token, user_id }: ICreateUserTokenDTO): Promise<UserTokens> {
+  async create({
+    expires_date,
+    refresh_token,
+    user_id,
+  }: ICreateUserTokenDTO): Promise<UserTokens> {
     const userTokens = this.repository.create({
       expires_date,
       refresh_token,
-      user_id
-    })
-    await this.repository.save(userTokens)
-    return userTokens
+      user_id,
+    });
+    await this.repository.save(userTokens);
+
+    return userTokens;
   }
-  
 }
+
+export { UsersTokenRepository };
