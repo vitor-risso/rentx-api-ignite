@@ -12,7 +12,7 @@ import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRep
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
 import { RentalsRepository } from "@modules/rentals/infra/typeorm/repositories/RentalsRepository";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
-import "@shared/container/providers";
+import "@shared/container/providers/index";
 import { container } from "tsyringe";
 
 container.registerSingleton<ICategoriesRepository>(
