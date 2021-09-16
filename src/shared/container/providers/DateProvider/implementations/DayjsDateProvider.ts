@@ -27,9 +27,13 @@ class DayjsDateProvider implements IDateProvider {
   addDays(days: number): Date {
     return dayjs().add(days, "day").toDate();
   }
-  
+
   addHours(hours: number): Date {
-  return dayjs().add(hours, "hour").toDate()
+    return dayjs().add(hours, "hour").toDate();
+  }
+
+  compareIfBefore(start_date: Date, end_date: Date): Boolean {
+    return dayjs(start_date).isBefore(end_date);
   }
 }
 
