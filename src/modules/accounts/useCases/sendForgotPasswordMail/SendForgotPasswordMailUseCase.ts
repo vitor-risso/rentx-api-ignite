@@ -26,7 +26,7 @@ class SendForgotPasswordMailUseCase {
   async execute(email: string) {
     const user = await this.usersRepository.finByEmail(email);
 
-    if (!email) {
+    if (!user) {
       throw new AppError("User does not exists");
     }
 
