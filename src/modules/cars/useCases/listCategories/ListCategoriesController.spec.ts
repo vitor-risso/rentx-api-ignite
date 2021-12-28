@@ -32,7 +32,7 @@ describe("List all categories", () => {
       password: "admin",
     });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     await request(app)
       .post("/categories")
@@ -41,7 +41,7 @@ describe("List all categories", () => {
         description: "Description test",
       })
       .set({
-        Authorization: `Baerer ${token}`,
+        Authorization: `Baerer ${refresh_token}`,
       });
 
     const response = await request(app).get("/categories");
